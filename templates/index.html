@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <!-- Webpage Title -->
+        <title>Home | Remaking Genie Chart</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        <meta property="og:title" content="Remaking Genie Chart"/>
+        <meta property="og:description" content="mini project for Web Plus"/>
+        <meta property="og:image" content="{{ url_for('static', filename='ogimg.png') }}"/>
+
+        <!-- Bulma CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <!-- Font Awesome CSS -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+        <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+
+        <script>
+            $(document).ready(function () {
+                get_posts()
+            })
+            $(document).ready(function () {
+                get_songs()
+            })
+        </script>
+
+    </head>
+
+    <body>
+    <nav class="navbar is-fixed-top is-white" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="{{ url_for('static', filename='logo.png') }}">
+                <strong class="is-sparta"
+                        style="font-family: 'Stylish', sans-serif;font-size: larger;">Remaking Genie Chart</strong>
+            </a>
+        </div>
+    </nav>
+    <section class="section">
+        <article class="media">
+            <figure class="media-left" style="align-self: center">
+                <a class="image is-32x32">
+                    <img class="is-rounded"
+                        src="{{ url_for('static', filename=user_info.profile_pic_real) }}">
+                </a>
+            </figure>
+            <strong>{{ user_info.username }}</strong>
+            &nbsp;&nbsp;&nbsp;<a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout"
+                onclick="sign_out()">
+                로그아웃<span class="icon is-small">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></span>
+            </a>
+            
+        </article>
+
+        
+    </section>
+
+    <section class="section">
+        <div id="post-box" class="container">
+            <div class="box">
+                <article class="media">
+                    <div class="media-left">
+                        <a class="image is-64x64" href="#">
+                            <img class="is-rounded"
+                                src={{ url_for("static", filename="profile_pics/profile_placeholder.png") }} alt="Image">
+                        </a>
+                    </div>
+                    <div class="media-content">
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                <a class="level-item is-sparta" aria-label="heart" onclick="toggle_like('', 'heart')">
+                                    <span class="icon is-small"><i class="fa fa-heart" aria-hidden="true"></i></span>&nbsp;<span
+                                        class="like-num">2.7k</span>
+                                </a>
+                            </div>
+
+                        </nav>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+    </body>
+</html>
